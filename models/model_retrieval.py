@@ -184,9 +184,12 @@ class ALBEF(nn.Module):
     @torch.no_grad()
     def _dequeue_and_enqueue(self, image_feat, text_feat, idx):
         # gather keys before updating queue
-        image_feats = concat_all_gather(image_feat)
-        text_feats = concat_all_gather(text_feat)
-        idxs = concat_all_gather(idx)
+        # image_feats = concat_all_gather(image_feat)
+        # text_feats = concat_all_gather(text_feat)
+        # idxs = concat_all_gather(idx)
+        image_feats = image_feat
+        text_feats = text_feat
+        idxs = idx
 
         batch_size = image_feats.shape[0]
 
